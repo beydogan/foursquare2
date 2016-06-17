@@ -38,7 +38,7 @@ module Foursquare2
     # @option options Integer :radius - Radius in meters, up to approximately 2000 meters.
 
     def trending_venues(ll, options={})
-      options[:ll] = ll
+      options[:ll] = ll if ll.present?
       response = connection.get do |req|
         req.url "venues/trending", options
       end
